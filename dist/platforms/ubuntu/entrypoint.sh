@@ -20,7 +20,13 @@ if [[ "$RUN_AS_HOST_USER" == "true" ]]; then
   GROUPNAME=$(stat -c '%G' "$fullProjectPath")
   GROUPID=$(stat -c '%g' "$fullProjectPath")
 
-  groupadd -g $GROUPID $GROUPNAME
+  echo "----> fullProjectPath $fullProjectPath"
+  echo "----> USERNAME $USERNAME"
+  echo "----> USERID $USERID"
+  echo "----> GROUPNAME $GROUPNAME"
+  echo "----> GROUPID $GROUPID"
+
+  # groupadd -g $GROUPID $GROUPNAME
   useradd -u $USERID -g $GROUPID $USERNAME
   usermod -aG $GROUPNAME $USERNAME
   mkdir -p "/home/$USERNAME"
